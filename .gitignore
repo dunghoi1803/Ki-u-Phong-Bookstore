@@ -1,0 +1,24 @@
+# IDE / Editor
+ .vscode/
+ .idea/
+
+ # Python
+ __pycache__/
+ *.pyc
+ *.pyo
+ *.pyd
+
+ # Virtual env
+ backend/.venv/
+ backend/.venv*/
+
+ # Logs
+ *.log
+
+ # Env files
+ .env
+ backend/.env
+
+ # Misc
+ .DS_Store
+ Thumbs.db
