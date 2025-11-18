@@ -1,0 +1,405 @@
+/* ===== book-detail.css - BỐ CỤC MỚI ===== */
+
+/* Container chung */
+.container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 20px; 
+}
+
+/* ===== LAYOUT CHÍNH ===== */
+.book-detail { 
+  padding: 20px 0; 
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+/* ===== CỘT TRÁI: Ảnh + Actions ===== */
+.left-sidebar {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.book-thumb {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.book-thumb img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+/* Phân loại */
+.variant-group {
+  margin: 16px 0;
+}
+
+.variant-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #0b3a5a;
+}
+
+#variantSelect {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  background: white;
+}
+
+/* Số lượng */
+.quantity-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.quantity-input label {
+  font-weight: 600;
+  color: #0b3a5a;
+  min-width: 80px;
+}
+
+.quantity-input button {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quantity-input button:hover {
+  background: #f0f0f0;
+  border-color: #999;
+}
+
+.quantity-input input {
+  width: 60px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* Nút hành động */
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.btn-buy, .btn-cart {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-buy { 
+  background: #d32f2f; 
+  color: white; 
+}
+
+.btn-cart { 
+  background: #006bb3; 
+  color: white; 
+}
+
+.btn-buy:hover { 
+  background: #b71c1c; 
+}
+
+.btn-cart:hover { 
+  background: #004d80; 
+}
+
+/* ===== CỘT PHẢI: Nội dung chính ===== */
+.main-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.book-info h1 {
+  font-size: 28px;
+  margin: 0 0 12px;
+  color: #0b3a5a;
+  line-height: 1.3;
+}
+
+.author {
+  color: #d32f2f;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.info-row {
+  color: #555;
+  font-size: 15px;
+  margin: 8px 0;
+  display: flex;
+}
+
+.info-row strong {
+  min-width: 140px;
+  color: #333;
+}
+
+.price-large {
+  font-size: 32px;
+  color: #d32f2f;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.old-price-large {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.divider {
+  height: 1px;
+  background: #eee;
+  margin: 25px 0;
+}
+
+/* Thông tin vận chuyển */
+.transport-info {
+  background: #f8fbff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 25px 0;
+  font-size: 14px;
+  border-left: 4px solid #006bb3;
+}
+
+.transport-info h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: #0b3a5a;
+}
+
+.transport-info p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.transport-info a { 
+  color: #006bb3; 
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.transport-info a:hover {
+  text-decoration: underline;
+}
+
+/* Tabs */
+.tabs {
+  border-bottom: 2px solid #eee;
+  margin: 30px 0 0;
+  display: flex;
+  gap: 24px;
+}
+
+.tab {
+  padding: 12px 20px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: 0.2s;
+  font-size: 15px;
+}
+
+.tab.active {
+  color: #0b5394;
+  border-bottom-color: #0b5394;
+}
+
+.tab:hover {
+  color: #0b5394;
+}
+
+.tab-content {
+  display: none;
+  padding: 24px 0;
+  line-height: 1.8;
+  color: #444;
+  font-size: 15px;
+}
+
+.tab-content.active { 
+  display: block; 
+}
+
+.tab-content p {
+  margin-bottom: 12px;
+}
+
+/* ===== REVIEW SECTION - Ở DƯỚI CÙNG ===== */
+.review-section {
+  margin-top: 40px;
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.review-section h2 {
+  color: #0b3a5a;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.star-rating {
+  margin: 15px 0;
+}
+
+.star-rating i {
+  font-size: 32px;
+  color: #ccc;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: 0.2s;
+}
+
+.star-rating i:hover,
+.star-rating i.active {
+  color: #ffbf00;
+}
+
+#reviewText {
+  width: 100%;
+  height: 120px;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.anonymous-check {
+  display: block;
+  margin: 15px 0;
+  font-size: 15px;
+}
+
+.anonymous-check input {
+  margin-right: 8px;
+}
+
+.review-btn {
+  padding: 12px 24px;
+  border: none;
+  background: #006bb3;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: .2s;
+}
+
+.review-btn:hover {
+  background: #004d80;
+}
+
+.review-list-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #0b3a5a;
+}
+
+.review-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #f8fbff;
+  border-radius: 8px;
+  border: 1px solid #e3f2fd;
+}
+
+.review-author {
+  font-weight: 600;
+  color: #0b5394;
+  margin-bottom: 8px;
+}
+
+.review-stars {
+  color: #ffbf00;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.review-text {
+  margin-top: 10px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Footer */
+.footer {
+  background: #0b3a5a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .main-layout { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .left-sidebar {
+    position: relative;
+    top: 0;
+  }
+  
+  .btn-group {
+    flex-direction: row;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .tabs { 
+    gap: 12px;
+    overflow-x: auto;
+  }
+  
+  .review-section {
+    padding: 20px;
+  }
+}

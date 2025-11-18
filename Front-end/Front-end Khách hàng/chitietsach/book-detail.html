@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KIEUPHONG.COM - Nhà sách trực tuyến</title>
+  <link rel="stylesheet" href="/Front-end Khách hàng/Chung/menu.css" />
+  <link rel="stylesheet" href="book-detail.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="navbar-container"></div>
+  <script src="/Front-end Khách hàng/Chung/menu.js"></script>
+
+  <main class="container book-detail">
+    <div class="main-layout">
+      <!-- ===== CỘT TRÁI: Ảnh + Actions ===== -->
+      <aside class="left-sidebar">
+        <!-- Hình ảnh -->
+        <div class="book-thumb">
+          <img id="bookImage" src="" alt="">
+        </div>
+
+        <!-- Phân loại -->
+        <div class="variant-group">
+          <label>Phân loại:</label>
+          <select id="variantSelect">
+            <option value="">Chọn phiên bản</option>
+          </select>
+        </div>
+
+        <!-- Số lượng -->
+        <div class="quantity-input">
+          <label>Số lượng:</label>
+          <button type="button" id="qtyDec">-</button>
+          <input type="number" id="quantity" value="1" min="1" readonly>
+          <button type="button" id="qtyInc">+</button>
+        </div>
+
+        <!-- Nút hành động -->
+        <div class="btn-group">
+          <button class="btn-buy" id="buyNow">Mua ngay</button>
+          <button class="btn-cart" id="addToCart">Thêm vào giỏ hàng</button>
+        </div>
+      </aside>
+
+      <!-- ===== CỘT PHẢI: Nội dung chính ===== -->
+      <div class="main-content">
+        <!-- Thông tin sách -->
+        <div class="book-info">
+          <h1 id="bookTitle"></h1>
+          <div class="author" id="bookAuthor"></div>
+
+          <div class="info-row"><strong>Nhà xuất bản:</strong> <span id="bookPublisher"></span></div>
+          <div class="info-row"><strong>Năm xuất bản:</strong> <span id="bookYear"></span></div>
+          <div class="info-row"><strong>Số trang:</strong> <span id="bookPages"></span></div>
+          <div class="info-row"><strong>Ngôn ngữ:</strong> <span id="bookLanguage"></span></div>
+          <div class="info-row"><strong>Kích thước:</strong> <span id="bookSize"></span></div>
+
+          <div class="price-large" id="bookPrice"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Thông tin vận chuyển -->
+        <div class="transport-info">
+          <h3><i class="fa-solid fa-truck"></i> Thông tin vận chuyển</h3>
+          <p id="shippingInfo">📦 Giao hàng tiêu chuẩn: Dự kiến giao <strong>16/11</strong></p>
+          <p>📍 Giao hàng đến: <span id="deliveryAddress">Phường Bến Nghé, Quận 1, Hồ Chí Minh</span> <a href="#">Thay đổi</a></p>
+          <p>✅ Miễn phí vận chuyển cho đơn hàng từ 150.000₫</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Tabs: Chi tiết & Mô tả -->
+        <div class="tabs">
+          <div class="tab active" data-tab="description">Mô tả sản phẩm</div>
+          <div class="tab" data-tab="details">Chi tiết sản phẩm</div>
+        </div>
+        
+        <div id="description" class="tab-content active"></div>
+        <div id="details" class="tab-content"></div>
+      </div>
+    </div>
+
+    <!-- ===== REVIEW SECTION - Ở DƯỚI CÙNG ===== -->
+    <div class="review-section">
+      <h2>Đánh giá sản phẩm</h2>
+
+      <!-- Chọn sao -->
+      <div class="star-rating" id="starRating">
+        <i class="fa-solid fa-star" data-rate="1"></i>
+        <i class="fa-solid fa-star" data-rate="2"></i>
+        <i class="fa-solid fa-star" data-rate="3"></i>
+        <i class="fa-solid fa-star" data-rate="4"></i>
+        <i class="fa-solid fa-star" data-rate="5"></i>
+      </div>
+
+      <!-- Viết đánh giá -->
+      <textarea id="reviewText" placeholder="Hãy chia sẻ cảm nhận của bạn (tối thiểu 100 ký tự)"></textarea>
+
+      <label class="anonymous-check">
+        <input type="checkbox" id="anonymousToggle"> Đăng ẩn danh
+      </label>
+
+      <button id="submitReview" class="review-btn">Gửi đánh giá</button>
+
+      <h3 class="review-list-title">Tất cả đánh giá</h3>
+      <div id="reviewList"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© KIEUPHONG BOOKSTORE</div>
+  </footer>
+
+  <script src="/Front-end Khách hàng/Chung/api.js"></script>
+  <script src="book-detail.js"></script>
+</body>
+</html>

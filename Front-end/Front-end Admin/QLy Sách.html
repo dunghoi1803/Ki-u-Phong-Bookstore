@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> KieuPhongBook</title>
+    <!-- Tải Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Liên kết đến tệp CSS tùy chỉnh -->
+    <link rel="stylesheet" href="Qly Sách.css">
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- Sidebar Menu (Thanh Menu Dọc) -->
+    <aside id="sidebar" class="w-52 bg-gray-800 text-white flex flex-col transition-transform duration-300 ease-in-out transform -translate-x-full md:translate-x-0 fixed md:static z-20 h-full shadow-lg">
+        <div class="p-2 text-2xl font-bold bg-gray-900 border-b border-gray-700">
+            KieuPhongBook
+        </div>
+        <nav class="flex-1 overflow-y-auto custom-scrollbar">
+            <a href="#" onclick="showView('home')" class="block py-3 px-6 text-sm font-medium hover:bg-gray-700 transition duration-150 rounded-md mx-2 mt-2" data-view="home">
+                Trang Chủ
+            </a>
+            <p class="text-xs font-semibold uppercase text-gray-400 px-6 pt-4 pb-2">Quản Lý Dữ Liệu</p>
+            <a href="#" onclick="showView('book-list')" class="block py-3 px-6 text-sm font-medium hover:bg-gray-700 transition duration-150 rounded-md mx-2" data-view="book-list">
+                Quản Lý Sách
+            </a>
+            <a href="#" onclick="showView('category-list')" class="block py-3 px-6 text-sm font-medium hover:bg-gray-700 transition duration-150 rounded-md mx-2" data-view="category-list">
+                Quản Lý Danh Mục
+            </a>
+            <a href="#" onclick="showView('order-list')" class="block py-3 px-6 text-sm font-medium hover:bg-gray-700 transition duration-150 rounded-md mx-2" data-view="order-list">
+                Quản Lý Đơn Hàng
+            </a>
+            <p class="text-xs font-semibold uppercase text-gray-400 px-6 pt-4 pb-2">Báo Cáo</p>
+            <a href="#" onclick="showView('reports', 'report_book')" class="block py-3 px-6 text-sm font-medium hover:bg-gray-700 transition duration-150 rounded-md mx-2" data-view="reports">
+            Báo Cáo & Thống Kê
+            </a>
+            
+        </nav>
+        <div class="p-4 border-t border-gray-700 text-sm text-gray-400">
+            Phiên bản 2.0 (Đơn Hàng)
+        </div>
+    </aside>
+
+    <!-- Overlay cho mobile -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black opacity-0 z-10 md:hidden transition-opacity duration-300 hidden" onclick="toggleSidebar()"></div>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <!-- Header cho Mobile Sidebar Toggle -->
+        <header class="bg-white shadow p-4 md:hidden flex justify-between items-center z-10">
+            <h1 class="text-xl font-semibold text-gray-800">QL Sách & Đơn</h1>
+            <button id="menu-btn" onclick="toggleSidebar()" class="text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </header>
+
+        <!-- Main Content View Container -->
+        <div id="view-container" class="flex-1 p-4 sm:p-6 overflow-y-auto custom-scrollbar">
+            <!-- Nội dung sẽ được tải bởi script.js -->
+        </div>
+
+        <!-- Notification/Modal Container (for custom alerts/confirmations / detailed view) -->
+        <div id="modal-container" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden items-center justify-center p-4 z-50">
+            <!-- Modal Content sẽ nhận class max-w-sm hoặc max-w-xl từ JS -->
+            <div id="modal-content" class="bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full transform transition-all duration-300 scale-95 opacity-0">
+                <h3 class="text-xl font-bold text-gray-800 mb-4" id="modal-title">Thông Báo</h3>
+                <div class="text-gray-600 mb-6" id="modal-message">Nội dung thông báo...</div>
+                <div class="flex justify-end space-x-3" id="modal-actions">
+                    <!-- Actions will be injected here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Liên kết đến tệp JavaScript -->
+    <script src="api-admin.js"></script>
+    <script src="QLy Sách.js"></script>
+
+</body>
+</html>

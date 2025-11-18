@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KIEUPHONG.COM - Nhà sách trực tuyến</title>
+  <link rel="stylesheet" href="/Front-end Khách hàng/Chung/menu.css" />
+  <link rel="stylesheet" href="giohang.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <!-- Cart Section -->
+  <section class="cart-section">
+    <div class="container">
+      <h2 class="section-title">Giỏ hàng của bạn</h2>
+
+      <div class="cart-table-container">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" id="select-all" />
+              </th>
+              <th>Sản phẩm</th>
+              <th>Đơn giá</th>
+              <th>Số lượng</th>
+              <th>Thành tiền</th>
+              <th>Xóa</th>
+            </tr>
+          </thead>
+          <tbody id="cart-items">
+            <!-- Dữ liệu sẽ được thêm bằng JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Tổng cộng (<span id="selected-count">0</span> sản phẩm):</span>
+          <strong id="total-price">0 đ</strong>
+        </div>
+        <div class="summary-actions">
+          <a href="/Front-end Khách hàng/TrangSP/product.html" class="btn-continue">Tiếp tục mua sắm</a>
+          <button class="btn-checkout" id="checkout-btn">Thanh toán</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 KIEUPHONG. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/Front-end Khách hàng/Chung/api.js"></script>
+  <script src="/Front-end Khách hàng/Chung/menu.js"></script>
+  <script src="giohang.js"></script>
+</body>
+</html>

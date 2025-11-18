@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập & Đăng Ký</title>
+    <link rel="stylesheet" href="dangnhap.css">
+</head>
+<body>
+    <!-- Container chính -->
+    <div class="container">
+        <div class="form-wrapper">
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="login">Đăng nhập</button>
+                <button class="tab-btn" data-tab="register">Đăng ký</button>
+            </div>
+
+            <!-- Form Đăng Nhập -->
+            <div id="login-tab" class="tab-content active">
+                <h2>ĐĂNG NHẬP</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>Số điện thoại/Email</label>
+                        <input type="text" id="login-username" placeholder="Nhập số điện thoại hoặc email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mật khẩu</label>
+                        <div class="password-input">
+                            <input type="password" id="login-password" placeholder="Nhập mật khẩu" required>
+                            <button type="button" class="toggle-password">Hiện</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Đăng nhập</button>
+                    <a href="#" class="forgot-password" onclick="showForgotPassword(); return false;">Quên mật khẩu?</a>
+                </form>
+            </div>
+
+            <!-- Form Đăng Ký -->
+            <div id="register-tab" class="tab-content">
+                <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label>Số điện thoại/Email</label>
+                        <input type="text" id="register-contact" placeholder="Nhập số điện thoại hoặc email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Chọn phương thức xác minh OTP</label>
+                        <div class="otp-methods">
+                            <button type="button" class="otp-btn active" data-method="sms">
+                                <span class="icon">💬</span> Tin nhắn SMS
+                            </button>
+                            <button type="button" class="otp-btn" data-method="zns">
+                                <span class="icon">Z</span> Zalo ZNS
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-secondary" id="send-otp-btn">Gửi mã OTP</button>
+
+                    <div class="form-group" id="otp-group" style="display: none;">
+                        <label>Mã xác nhận OTP</label>
+                        <input type="text" id="register-otp" placeholder="6 ký tự" maxlength="6">
+                        <small class="otp-timer">Mã OTP sẽ hết hạn sau <span id="timer">60</span>s</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mật khẩu</label>
+                        <div class="password-input">
+                            <input type="password" id="register-password" placeholder="Nhập mật khẩu" required>
+                            <button type="button" class="toggle-password">Hiện</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Khôi Phục Mật Khẩu -->
+    <div id="forgot-password-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>KHÔI PHỤC MẬT KHẨU</h2>
+            <form id="forgot-password-form">
+                <div class="form-group">
+                    <label>Số điện thoại/Email</label>
+                    <input type="text" id="forgot-contact" placeholder="Nhập số điện thoại hoặc email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Chọn phương thức xác minh OTP</label>
+                    <div class="otp-methods">
+                        <button type="button" class="otp-btn active" data-method="sms">
+                            <span class="icon">💬</span> Tin nhắn SMS
+                        </button>
+                        <button type="button" class="otp-btn" data-method="zns">
+                            <span class="icon">Z</span> Zalo ZNS
+                        </button>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-secondary" id="send-forgot-otp-btn">Gửi mã OTP</button>
+
+                <div class="form-group" id="forgot-otp-group" style="display: none;">
+                    <label>Mã xác nhận OTP</label>
+                    <input type="text" id="forgot-otp" placeholder="6 ký tự" maxlength="6">
+                    <small class="otp-timer">Mã OTP sẽ hết hạn sau <span id="forgot-timer">60</span>s</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Mật khẩu mới</label>
+                    <div class="password-input">
+                        <input type="password" id="new-password" placeholder="Nhập mật khẩu mới" required>
+                        <button type="button" class="toggle-password">Hiện</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Xác nhận</button>
+                <button type="button" class="btn-back" onclick="closeForgotPassword()">Trở về</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Trang Thông Tin Tài Khoản -->
+    <div id="account-info" style="display: none;">
+        <div class="account-container">
+            <h2>THÔNG TIN TÀI KHOẢN</h2>
+            <div class="account-details">
+                <p><strong>Tên đăng nhập:</strong> <span id="account-username"></span></p>
+                <p><strong>Trạng thái:</strong> <span class="status-active">Đã xác thực</span></p>
+                <p><strong>Ngày tạo:</strong> <span id="account-created"></span></p>
+            </div>
+            <button class="btn-primary" onclick="logout()">Đăng xuất</button>
+        </div>
+    </div>
+
+    <script src="/Front-end Khách hàng/Chung/api.js"></script>
+    <script src="dangnhap.js"></script>
+</body>
+</html>

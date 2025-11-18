@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KIEUPHONG.COM - Nhà sách trực tuyến</title>
+  <link rel="stylesheet" href="/Front-end Khách hàng/Chung/menu.css" />
+  <link rel="stylesheet" href="thanhtoan.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- BẠN TỰ GẮN NAVBAR Ở ĐÂY -->
+    <div id="navbar-container"></div>
+
+    <div class="container">
+
+        <!-- ĐỊA CHỈ GIAO HÀNG -->
+        <section class="section-box">
+            <h2>Địa chỉ giao hàng</h2>
+
+            <div class="form-grid">
+                <label>Người nhận</label>
+                <input type="text" id="nguoinhan" required>
+
+                <label>Số điện thoại</label>
+                <input type="text" id="sdt" placeholder="Nhập số điện thoại">
+
+                <label>Tỉnh / Thành phố</label>
+                <select id="tinh">
+                    <option value="">-- Chọn tỉnh --</option>
+                </select>
+
+                <label>Quận / Huyện</label>
+                <select id="huyen">
+                    <option value="">-- Chọn quận/huyện --</option>
+                </select>
+
+                <label>Phường / Xã</label>
+                <select id="xa">
+                    <option value="">-- Chọn phường/xã --</option>
+                </select>
+
+                <label>Địa chỉ cụ thể</label>
+                <input type="text" id="diachi" placeholder="Số nhà, đường...">
+            </div>
+        </section>
+
+        <!-- DỰ KIẾN GIAO HÀNG -->
+        <section class="section-box">
+            <h2>Dự kiến giao hàng</h2>
+            <p id="dukien" class="highlight">Vui lòng điền đủ thông tin giao hàng...</p>
+        </section>
+
+        <!-- PHƯƠNG THỨC THANH TOÁN -->
+        <section class="section-box">
+            <h2>Phương thức thanh toán</h2>
+
+            <div class="payment-methods">
+                <label><input type="radio" name="paymethod" value="cod" checked> Thanh toán khi nhận hàng (COD)</label>
+                <label><input type="radio" name="paymethod" value="bank"> Chuyển khoản ngân hàng</label>
+                <label><input type="radio" name="paymethod" value="momo"> Ví Momo</label>
+                <label><input type="radio" name="paymethod" value="vnpay"> VNPay</label>
+            </div>
+        </section>
+
+        <!-- GHI CHÚ + XUẤT HOÁ ĐƠN -->
+        <section class="section-box">
+            <h2>Ghi chú & Xuất hoá đơn</h2>
+            <textarea id="ghichu" placeholder="Ghi chú cho đơn hàng..."></textarea>
+            
+            <label class="checkbox-row">
+                <input type="checkbox" id="xuatHD"> Yêu cầu xuất hóa đơn
+            </label>
+        </section>
+
+        <!-- DANH SÁCH SẢN PHẨM -->
+        <section class="section-box">
+            <h2>Đơn hàng của bạn</h2>
+            <div id="cart-items"></div>
+        </section>
+
+        <!-- TÍNH TIỀN -->
+        <section class="section-box total-box">
+            <div class="total-row">
+                <span>Thành tiền:</span>
+                <span id="thanhtien">0đ</span>
+            </div>
+            <div class="total-row">
+                <span>Phí vận chuyển:</span>
+                <span id="phivc">0đ</span>
+            </div>
+            <div class="total-row total-final">
+                <span>Tổng cộng:</span>
+                <span id="tongtien">0đ</span>
+            </div>
+
+            <button id="xacnhan">Đặt hàng</button>
+        </section>
+
+    </div>
+<script src="/Front-end Khách hàng/Chung/api.js"></script>
+<script src="/Front-end Khách hàng/Chung/menu.js"></script>
+<script src="thanhtoan.js"></script>
+</body>
+</html>
