@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     variant: document.getElementById('variantSelect'),
     qty: document.getElementById('quantity'),
     shippingInfo: document.getElementById('shippingInfo'),
+    deliveryAddress: document.getElementById('deliveryAddress'),
     details: document.getElementById('details'),
     description: document.getElementById('description')
   };
@@ -155,6 +156,9 @@ Trong suốt cuộc hành trình, Santiago gặp gỡ nhiều con người đặ
       `;
 
       renderVariants(data.variants || []);
+
+      // Cập nhật thông tin vận chuyển sau khi đã có sách
+      updateShippingInfo();
     } catch (err) {
       console.error('Lỗi tải sách, fallback dữ liệu ảo:', err);
       const data = mockBookData;
@@ -186,6 +190,7 @@ Trong suốt cuộc hành trình, Santiago gặp gỡ nhiều con người đặ
         <p><strong>Loại bìa:</strong> Bìa gáy vuông</p>
       `;
       renderVariants(data.variants || []);
+      updateShippingInfo();
     }
   }
 
@@ -361,4 +366,46 @@ Trong suốt cuộc hành trình, Santiago gặp gỡ nhiều con người đặ
   loadReviews();
 
   console.log('✅ Trang chi tiết sách đã load với backend');
+
+  // ===== THÔNG TIN VẬN CHUYỂN =====
+  async function updateShippingInfo() {
+    // Ngày giao = hôm nay + 3 ngày
+    const today = new Date();
+    const deliveryDate = new Date(today);
+    deliveryDate.setDate(today.getDate() + 3);
+    const opts = { day: "2-digit", month: "2-digit" };
+    const formatted = deliveryDate.toLocaleDateString("vi-VN", opts);
+
+    if (els.shippingInfo) {
+      els.shippingInfo.innerHTML = `📦 Giao hàng tiêu chuẩn: Dự kiến giao <strong>${formatted}</strong>`;
+    }
+
+    // Địa chỉ mặc định của người dùng (nếu đã đăng nhập)
+    try {
+      const token = window.sessionStorage.getItem("accessToken");
+      if (!token || !els.deliveryAddress) {
+        return;
+      }
+      const addresses = await apiRequest("/users/me/addresses");
+      if (!Array.isArray(addresses) || addresses.length === 0) {
+        return;
+      }
+      const defaultAddr =
+        addresses.find((a) => a.mac_dinh) ||
+        addresses[0];
+
+      const parts = [
+        defaultAddr.dia_chi_chi_tiet,
+        defaultAddr.phuong_xa,
+        defaultAddr.quan_huyen,
+        defaultAddr.tinh_thanh,
+      ].filter(Boolean);
+
+      if (parts.length && els.deliveryAddress) {
+        els.deliveryAddress.textContent = parts.join(", ");
+      }
+    } catch (err) {
+      console.warn("Không thể tải địa chỉ mặc định:", err);
+    }
+  }
 });

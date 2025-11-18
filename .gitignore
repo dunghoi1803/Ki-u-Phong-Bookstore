@@ -1,24 +1,22 @@
-# IDE / Editor
- .vscode/
- .idea/
+  # Python
+  __pycache__/
+  *.pyc
+  *.pyo
 
- # Python
- __pycache__/
- *.pyc
- *.pyo
- *.pyd
+  # Virtual env
+  backend/.venv/
+  backend/venv/
+  backend/.venv*/
 
- # Virtual env
- backend/.venv/
- backend/.venv*/
+  # IDE / OS
+  .vscode/
+  .idea/
+  .DS_Store
+  Thumbs.db
 
- # Logs
- *.log
+  # Env / secrets
+  .env
+  backend/.env
 
- # Env files
- .env
- backend/.env
-
- # Misc
- .DS_Store
- Thumbs.db
+  # Logs
+  *.log

@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8
+    container_name: kieuphong-db
+    environment:
+      MYSQL_DATABASE: kieuphong_bookstore
+      MYSQL_USER: kp
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d:ro
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    container_name: kieuphong-backend
+    environment:
+      SECRET_KEY: "changeme-in-docker"
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: kp
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: kieuphong_bookstore
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    container_name: kieuphong-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  db_data:
