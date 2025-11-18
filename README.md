@@ -1,5 +1,3 @@
----
-
 ````markdown
 # 🏪 Kiều Phong Bookstore – Hệ thống bán sách online (FastAPI + HTML/JS)
 
